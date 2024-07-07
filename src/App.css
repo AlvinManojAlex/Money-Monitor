@@ -1,6 +1,15 @@
 .App {
   text-align: center;
+  align-items: center;
+  justify-content: center;
   background-color: #23395B;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
   margin: 0;
 }
 
@@ -10,6 +19,72 @@
   align-items: center;
   background-color: #161925;
   color: #CBF7ED;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
   font-size: 1.5rem;
+  width: 100%;
+}
+
+.navbar-left {
+  padding: 0 0 0 1.5rem;
+}
+
+.navbar-right {
+  padding: 0 1.5rem 0 0;
+}
+
+.center-div {
+  height: 10vh;
+  width: 70%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-content {
+  color: #CBF7ED;
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.custom-input {
+  background-color: #406E8E;
+  color: #CBF7ED;
+  border: none;
+  position: relative;
+  top: -7rem;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 15rem;
+  text-align: center;
+}
+
+.custom-input::placeholder {
+  color: #CBF7ED;
+}
+
+.custom-input:focus {
+  outline: none;
+  background-color: #8EA8C3;
+}
+
+.submit-button {
+  background-color: #161925;
+  color: #CBF7ED;
+  border: none;
+  position: relative;
+  top: -5rem;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 12rem;
+  text-align: center;
+}
+
+.submit-button:hover {
+  background-color: #8EA8C3;
+  transition-duration: 500ms;
 }
