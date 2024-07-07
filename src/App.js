@@ -6,7 +6,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Navbar rightText='Analysis'/>
+      <Navbar rightText='Analysis' rightLink='/analysis' />
       <div className='center-div'>
         <p className='center-content'>Monitor and Analyze your expenses efficiently</p>
       </div>
