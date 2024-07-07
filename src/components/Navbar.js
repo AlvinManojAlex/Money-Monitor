@@ -1,8 +1,8 @@
-const Navbar = () => {
+const Navbar = ({rightText}) => {
     return(
         <div className='navbar'>
-            <div>Money Monitor</div>
-            <div>Analysis</div>
+            <div className='navbar-left'>Money Monitor</div>
+            <div className='navbar-right'>{rightText}</div>
         </div>
     )
 }
