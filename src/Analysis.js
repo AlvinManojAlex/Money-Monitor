@@ -7,7 +7,7 @@ function Analysis() {
         <div className='App'>
             <Navbar rightText={'Add Expense'} rightLink='/' />
             <div className='center-div'>
-                <p>Analysis page</p>
+                <p className='center-content'>Analysis page</p>
             </div>
         </div>
     )
