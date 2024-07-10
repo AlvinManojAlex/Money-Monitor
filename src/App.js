@@ -22,10 +22,18 @@ function App() {
       return;
     }
 
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
+
     try{
       const docRef = await addDoc(collection(db, 'expenses'), {
         expense_type: expenseType,
         amount: parseFloat(amount),
+        day,
+        month,
+        year,
       });
 
       // Clear both the input fields
