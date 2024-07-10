@@ -56,9 +56,9 @@ function App() {
       <div className='center-div'>
         <p className='center-content'>Monitor and Analyze your expenses efficiently</p>
       </div>
-        <Dropdown options={expenseOptions} value={expenseType} onChange={(e) => setExpenseType(e.target.value)} />
-        <Input placeholder='Amount spent' value={amount} onChange={(e) => setAmount(e.target.value)} />
-        <button className='submit-button' onClick={handleAddExpense}>Add Expense</button>
+      <Dropdown options={expenseOptions} value={expenseType} onChange={(e) => setExpenseType(e.target.value)} />
+      <Input placeholder='Amount spent' value={amount} onChange={(e) => setAmount(e.target.value)} />
+      <button className='submit-button' onClick={handleAddExpense}>Add Expense</button>
     </div>
 
   );
