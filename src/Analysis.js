@@ -45,18 +45,46 @@ function Analysis() {
     return(
         <div className='App'>
             <Navbar rightText={'Add Expense'} rightLink='/' />
+
             <div className='center-div'>
                 <p className='center-content'>Analysis page</p>
             </div>
-            <PieChart width={400} height={400}>
-                <Pie data={data} cx={200} cy={200} innerRadius={60} outerRadius={120} fill="#8884d8" paddingAngle={5} datakey='value' >
-                    {data.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                    ))}
-                </Pie>
-                <Tooltip />
-                <Legend />
-            </PieChart>
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Overall Categorical Expenses</h2>
+                <PieChart width={350} height={350}>
+                    <Pie data={data} cx={175} cy={175} innerRadius={60} outerRadius={120} fill="#8884d8" paddingAngle={5} datakey='value' >
+                        {data.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                        ))}
+                    </Pie>
+                    <Tooltip />
+                    <Legend />
+                </PieChart>
+            </div>
+
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Monthly Expenses: Rent</h2>
+            </div>
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Monthly Expenses: Grocery</h2>
+            </div>
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Monthly Expenses: Food</h2>
+            </div>
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Monthly Expenses: Utilities</h2>
+            </div>
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Monthly Expenses: Travel</h2>
+            </div>
+
+
         </div>
     )
 }

@@ -1,12 +1,18 @@
+body {
+  background-color: #23395B;
+}
+
 .App {
   text-align: center;
   align-items: center;
   justify-content: center;
-  background-color: #23395B;
   margin: 0;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.Analysis {
+  margin-top: 20rem;
 }
 
 p {
@@ -22,6 +28,9 @@ p {
   padding: 1rem 0;
   font-size: 1.5rem;
   width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 5;
 }
 
 .navbar-left {
@@ -33,18 +42,38 @@ p {
 }
 
 .center-div {
-  height: 10vh;
+  height: 100vh;
   width: 70%;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: 8rem;
 }
 
 .center-content {
   color: #CBF7ED;
   font-size: 5rem;
   font-weight: bold;
+  padding-bottom: 3rem;
+}
+
+.center-subheading {
+  color: #CBF7ED;
+  margin: 0;
+  padding: 2rem 0;
+}
+
+.form-field {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 20rem;
 }
 
 .custom-dropdown {
