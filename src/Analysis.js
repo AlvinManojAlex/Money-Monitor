@@ -247,7 +247,7 @@ function Analysis() {
                 {utilityData.length > 0 ? (
                     <LineChart width={500} height={300} data={utilityData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
                         <CartesianGrid strokeDasharray="3" />
-                        <XAxis dataKey='month' padding={{left: 20, right: 10}} />
+                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
                         <YAxis stroke='#ffffff' />
                         <Tooltip />
                         <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
@@ -264,7 +264,7 @@ function Analysis() {
                 {travelData.length > 0 ? (
                     <LineChart width={500} height={300} data={travelData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
                         <CartesianGrid strokeDasharray="3" />
-                        <XAxis dataKey='month' padding={{left: 20, right: 10}} />
+                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
                         <YAxis stroke='#ffffff' />
                         <Tooltip />
                         <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
