@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
 import './App.css';
 import Navbar from './components/Navbar';
 
 function Analysis() {
 
     const [expenses, setExpenses] = useState([]);
-    const [data, setData] = useState([]);
+    const [pieChartData, setPieChartData] = useState([]);
+    const [rentData, setRentData] = useState([]);
+    const [groceryData, setGroceryData] = useState([]);
+    const [foodData, setFoodData] = useState([]);
+    const [utilityData, setUtilityData] = useState([]);
+    const [travelData, setTravelData] = useState([]);
 
     useEffect(() => {
         const fetchExpenses = async () => {
@@ -36,7 +41,122 @@ function Analysis() {
                 value: expenseCategories[key],
             }));
 
-            setData(chartData);
+            setPieChartData(chartData);
+
+            // Data aggregation for rent
+            const rentExpenses = expenses.filter(expense => expense.expense_type === 'Rent');
+            
+            const rentByMonth = rentExpenses.reduce((acc, expense) => {
+                const { day, month, year } = expense;
+                const date = new Date(year, month - 1, day);
+                const monthYear = `${date.getMonth() + 1}/${date.getFullYear()}`;
+
+                if (!acc[monthYear]){
+                    acc[monthYear] = 0;
+                }
+
+                acc[monthYear] += expense.amount;
+                return acc;
+            }, {});
+
+            const rentChartData = Object.keys(rentByMonth).map((key) => ({
+                month: key,
+                amount: rentByMonth[key],
+            })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
+
+            setRentData(rentChartData);
+
+            // Data aggregation for grocery
+            const groceryExpenses = expenses.filter(expense => expense.expense_type === 'Grocery');
+
+            const groceryByMonth = groceryExpenses.reduce((acc, expense) => {
+                const {day, month, year} = expense;
+                const date = new Date(year, month - 1, day);
+                const monthYear = `${date.getMonth() + 1}/${date.getFullYear()}`;
+
+                if (!acc[monthYear]){
+                    acc[monthYear] = 0;
+                }
+
+                acc[monthYear] += expense.amount;
+                return acc;
+            }, {});
+
+            const groceryChartData = Object.keys(groceryByMonth).map((key) => ({
+                month: key,
+                amount: groceryByMonth[key],
+            })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
+
+            setGroceryData(groceryChartData);
+
+            // Data aggregation for food
+            const foodExpenses = expenses.filter(expense => expense.expense_type === 'Food');
+            
+            const foodByMonth = foodExpenses.reduce((acc, expense) => {
+                const {day, month, year} = expense;
+                const date = new Date(year, month - 1, day);
+                const monthYear = `${date.getMonth() + 1}/${date.getFullYear()}`;
+
+                if (!acc[monthYear]){
+                    acc[monthYear] = 0;
+                }
+
+                acc[monthYear] += expense.amount;
+                return acc;
+            }, {});
+
+            const foodChartData = Object.keys(foodByMonth).map((key) => ({
+                month: key,
+                amount: foodByMonth[key],
+            })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
+
+            setFoodData(foodChartData);
+
+            // Data aggregation for utility
+            const utilityExpenses = expenses.filter(expense => expense.expense_type === 'Utility');
+
+            const utilityByMonth = utilityExpenses.reduce((acc, expense) => {
+                const {day, month, year} = expense;
+                const date = new Date(year, month - 1, day);
+                const monthYear = `${date.getMonth() + 1}/${date.getFullYear()}`;
+
+                if (!acc[monthYear]){
+                    acc[monthYear] = 0;
+                }
+
+                acc[monthYear] += expense.amount;
+                return acc;
+            }, {});
+
+            const utilityChartData = Object.keys(utilityByMonth).map((key) => ({
+                month: key,
+                amount: utilityByMonth[key],
+            })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
+
+            setUtilityData(utilityChartData);
+
+            // Data aggregation for travel
+            const travelExpenses = expenses.filter(expense => expense.expense_type === 'Travel');
+            const travelByMonth = travelExpenses.reduce((acc, expense) => {
+                const {day, month, year} = expense;
+                const date = new Date(year, month - 1, day);
+                const monthYear = `${date.getMonth() + 1}/${date.getFullYear()}`;
+
+                if (!acc[monthYear]){
+                    acc[monthYear] = 0;
+                }
+
+                acc[monthYear] += expense.amount;
+                return acc;
+            }, {});
+
+            const travelChartData = Object.keys(travelByMonth).map((key) => ({
+                month: key,
+                amount: travelByMonth[key],
+            })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
+
+            setTravelData(travelChartData);
+
         }
     }, [expenses]);
 
@@ -52,38 +172,108 @@ function Analysis() {
 
             <div className='center-div'>
                 <h2 className='center-subheading'>Overall Categorical Expenses</h2>
-                <PieChart width={350} height={350}>
-                    <Pie data={data} cx={175} cy={175} innerRadius={60} outerRadius={120} fill="#8884d8" paddingAngle={5} datakey='value' >
-                        {data.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                        ))}
-                    </Pie>
-                    <Tooltip />
-                    <Legend />
-                </PieChart>
+
+                {pieChartData.length > 0 ? (
+                    <PieChart width={350} height={350}>
+                        <Pie data={pieChartData} cx={175} cy={175} innerRadius={60} outerRadius={120} fill="#8884d8" paddingAngle={5} datakey='value'>
+                            {pieChartData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                        <Legend />
+                    </PieChart>
+                 ) : (
+                    <p>No Data Available to Display.</p>
+                )}
+
             </div>
 
 
             <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Rent</h2>
-            </div>
 
+                {rentData.length > 0 ? (
+                    <LineChart width={500} height={300} data={rentData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                        <CartesianGrid strokeDasharray="3" />
+                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                        <YAxis stroke='#ffffff' />
+                        <Tooltip />
+                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                    </LineChart>
+                ) : (
+                    <p>No Data Available to Display</p>
+                )}
+
+            </div>
+        
             <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Grocery</h2>
-            </div>
+                
+                {groceryData.length > 0 ? (
+                    <LineChart width={500} height={300} data={groceryData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                        <CartesianGrid strokeDasharray="3" />
+                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                        <YAxis stroke='#ffffff' />
+                        <Tooltip />
+                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                    </LineChart>
+                ) : (
+                    <p>No Data Available to Display</p>
+                )}
 
+            </div>
+            
             <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Food</h2>
-            </div>
 
+                {foodData.length > 0 ? (
+                    <LineChart width={500} height={300} data={foodData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                        <CartesianGrid strokeDasharray="3" />
+                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                        <YAxis stroke='#ffffff' />
+                        <Tooltip />
+                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                    </LineChart>
+                ) : (
+                    <p>No Data Available to Display</p>
+                )}
+
+            </div>
+            
             <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Utilities</h2>
-            </div>
 
+                {utilityData.length > 0 ? (
+                    <LineChart width={500} height={300} data={utilityData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                        <CartesianGrid strokeDasharray="3" />
+                        <XAxis dataKey='month' padding={{left: 20, right: 10}} />
+                        <YAxis stroke='#ffffff' />
+                        <Tooltip />
+                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                    </LineChart>
+                ) : (
+                    <p>No Data Available to Display</p>
+                )}
+
+            </div>
+            
             <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Travel</h2>
-            </div>
 
+                {travelData.length > 0 ? (
+                    <LineChart width={500} height={300} data={travelData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                        <CartesianGrid strokeDasharray="3" />
+                        <XAxis dataKey='month' padding={{left: 20, right: 10}} />
+                        <YAxis stroke='#ffffff' />
+                        <Tooltip />
+                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                    </LineChart>
+                ) : (
+                    <p>No Data Available to Display</p>
+                )}
+
+            </div>
 
         </div>
     )
