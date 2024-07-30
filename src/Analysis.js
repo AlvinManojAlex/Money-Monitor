@@ -184,7 +184,7 @@ function Analysis() {
                         <Legend />
                     </PieChart>
                  ) : (
-                    <p>No Data Available to Display.</p>
+                    <p className='text-no-data'>No Data Available to Display.</p>
                 )}
 
             </div>
@@ -202,7 +202,7 @@ function Analysis() {
                         <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
                     </LineChart>
                 ) : (
-                    <p>No Data Available to Display</p>
+                    <p className='text-no-data'>No Data Available to Display</p>
                 )}
 
             </div>
@@ -219,7 +219,7 @@ function Analysis() {
                         <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
                     </LineChart>
                 ) : (
-                    <p>No Data Available to Display</p>
+                    <p className='text-no-data'>No Data Available to Display</p>
                 )}
 
             </div>
@@ -236,7 +236,7 @@ function Analysis() {
                         <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
                     </LineChart>
                 ) : (
-                    <p>No Data Available to Display</p>
+                    <p className='text-no-data'>No Data Available to Display</p>
                 )}
 
             </div>
@@ -253,7 +253,7 @@ function Analysis() {
                         <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
                     </LineChart>
                 ) : (
-                    <p>No Data Available to Display</p>
+                    <p className='text-no-data'>No Data Available to Display</p>
                 )}
 
             </div>
@@ -270,7 +270,7 @@ function Analysis() {
                         <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
                     </LineChart>
                 ) : (
-                    <p>No Data Available to Display</p>
+                    <p className='text-no-data'>No Data Available to Display</p>
                 )}
 
             </div>
