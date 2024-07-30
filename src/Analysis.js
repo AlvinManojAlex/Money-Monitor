@@ -113,7 +113,7 @@ function Analysis() {
             setFoodData(foodChartData);
 
             // Data aggregation for utility
-            const utilityExpenses = expenses.filter(expense => expense.expense_type === 'Utility');
+            const utilityExpenses = expenses.filter(expense => expense.expense_type === 'Utilities');
 
             const utilityByMonth = utilityExpenses.reduce((acc, expense) => {
                 const {day, month, year} = expense;
