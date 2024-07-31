@@ -2,6 +2,8 @@ body {
   background-color: #23395B;
 }
 
+/* The below styling is for screens of laptops, iPads and tablets. */
+
 .App {
   text-align: center;
   align-items: center;
@@ -113,7 +115,7 @@ p {
   background-color: #8EA8C3;
 }
 
-.submit-button {
+.submit-button, .analyze-button {
   background-color: #161925;
   color: #CBF7ED;
   border: none;
@@ -127,11 +129,58 @@ p {
   text-align: center;
 }
 
-.submit-button:hover {
+.submit-button:hover, .analyze-button:hover {
   background-color: #8EA8C3;
   transition-duration: 500ms;
 }
 
 .text-no-data{
   margin: 0 0 0 0.5rem;
+}
+
+/* The below styling is for mobile screens. */
+
+@media (max-width: 37.5rem) {
+  .navbar-right{
+    display: none;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar-left {
+    padding: 0;
+  }
+
+  .center-div{
+    width: 70%;
+  }
+
+  .center-content {
+    font-size: 3rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .form-field {
+    width: 35%;
+  }
+
+  .custom-dropdown {
+    width: 15rem;
+  }
+
+  .custom-input {
+    width: 11rem;
+  }
+
+  .submit-button, .analyze-button {
+    width: 11rem;
+  }
+}
+
+@media (min-width: 37.5rem) {
+  .analyze-button {
+    display: none;
+  }
 }

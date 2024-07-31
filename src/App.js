@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { db } from './firebase';
 import { collection, addDoc } from 'firebase/firestore';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Input from './components/Input';
@@ -49,6 +50,11 @@ function App() {
 
   };
 
+  const navigate = useNavigate();
+  const handleAnalyze = () => {
+    navigate('/analysis')
+  }
+
   return (
 
     <div className="App">
@@ -60,6 +66,7 @@ function App() {
         <Dropdown options={expenseOptions} value={expenseType} onChange={(e) => setExpenseType(e.target.value)} />
         <Input placeholder='Amount spent' value={amount} onChange={(e) => setAmount(e.target.value)} />
         <button className='submit-button' onClick={handleAddExpense}>Add Expense</button>
+        <button className='analyze-button' onClick={handleAnalyze}>Analyze</button>
       </div>
     </div>
 
