@@ -66,7 +66,7 @@ function App() {
         <Dropdown options={expenseOptions} value={expenseType} onChange={(e) => setExpenseType(e.target.value)} />
         <Input placeholder='Amount spent' value={amount} onChange={(e) => setAmount(e.target.value)} />
         <button className='submit-button' onClick={handleAddExpense}>Add Expense</button>
-        <button className='analyze-button' onClick={handleAnalyze}>Analyze</button>
+        <button className='analyze-button' onClick={handleAnalyze}>Analysis</button>
       </div>
     </div>
 
