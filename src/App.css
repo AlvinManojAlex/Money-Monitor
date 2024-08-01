@@ -48,6 +48,7 @@ p {
   width: 70%;
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -154,12 +155,19 @@ p {
   }
 
   .center-div{
-    width: 70%;
+    width: 80%;
+    height: auto;
+    flex-direction: column;
   }
 
   .center-content {
     font-size: 3rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  .center-subheading {
+    font-size: 1.2rem;
+    padding: 1rem 0;
   }
 
   .form-field {
@@ -176,6 +184,14 @@ p {
 
   .submit-button, .analyze-button {
     width: 11rem;
+  }
+
+  /* .PieChart {
+    width: 50%;
+  } */
+
+  .recharts-responsive-container {
+    width: 100%;
   }
 }
 

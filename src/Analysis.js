@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { db } from './firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, Line, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 'recharts';
 import './App.css';
 import Navbar from './components/Navbar';
 
@@ -174,15 +174,17 @@ function Analysis() {
                 <h2 className='center-subheading'>Overall Categorical Expenses</h2>
 
                 {pieChartData.length > 0 ? (
-                    <PieChart width={350} height={350}>
-                        <Pie data={pieChartData} cx={175} cy={175} innerRadius={60} outerRadius={120} fill="#8884d8" paddingAngle={5} datakey='value'>
-                            {pieChartData.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                            ))}
-                        </Pie>
-                        <Tooltip />
-                        <Legend />
-                    </PieChart>
+                    <ResponsiveContainer width='100%' height={400}>
+                        <PieChart width={350} height={350}>
+                            <Pie data={pieChartData} cx='50%' cy='50%' innerRadius={60} outerRadius={120} fill="#8884d8" paddingAngle={5} datakey='value'>
+                                {pieChartData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                                ))}
+                            </Pie>
+                            <Tooltip />
+                            <Legend />
+                        </PieChart>
+                    </ResponsiveContainer>
                  ) : (
                     <p className='text-no-data'>No Data Available to Display.</p>
                 )}
@@ -194,13 +196,15 @@ function Analysis() {
                 <h2 className='center-subheading'>Monthly Expenses: Rent</h2>
 
                 {rentData.length > 0 ? (
-                    <LineChart width={500} height={300} data={rentData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
-                        <CartesianGrid strokeDasharray="3" />
-                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
-                        <YAxis stroke='#ffffff' />
-                        <Tooltip />
-                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
-                    </LineChart>
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={rentData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
                 ) : (
                     <p className='text-no-data'>No Data Available to Display</p>
                 )}
@@ -211,13 +215,15 @@ function Analysis() {
                 <h2 className='center-subheading'>Monthly Expenses: Grocery</h2>
                 
                 {groceryData.length > 0 ? (
-                    <LineChart width={500} height={300} data={groceryData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
-                        <CartesianGrid strokeDasharray="3" />
-                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
-                        <YAxis stroke='#ffffff' />
-                        <Tooltip />
-                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
-                    </LineChart>
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={groceryData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
                 ) : (
                     <p className='text-no-data'>No Data Available to Display</p>
                 )}
@@ -228,13 +234,15 @@ function Analysis() {
                 <h2 className='center-subheading'>Monthly Expenses: Food</h2>
 
                 {foodData.length > 0 ? (
-                    <LineChart width={500} height={300} data={foodData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
-                        <CartesianGrid strokeDasharray="3" />
-                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
-                        <YAxis stroke='#ffffff' />
-                        <Tooltip />
-                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
-                    </LineChart>
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={foodData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
                 ) : (
                     <p className='text-no-data'>No Data Available to Display</p>
                 )}
@@ -245,13 +253,15 @@ function Analysis() {
                 <h2 className='center-subheading'>Monthly Expenses: Utilities</h2>
 
                 {utilityData.length > 0 ? (
-                    <LineChart width={500} height={300} data={utilityData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
-                        <CartesianGrid strokeDasharray="3" />
-                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
-                        <YAxis stroke='#ffffff' />
-                        <Tooltip />
-                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
-                    </LineChart>
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={utilityData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
                 ) : (
                     <p className='text-no-data'>No Data Available to Display</p>
                 )}
@@ -262,13 +272,15 @@ function Analysis() {
                 <h2 className='center-subheading'>Monthly Expenses: Travel</h2>
 
                 {travelData.length > 0 ? (
-                    <LineChart width={500} height={300} data={travelData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
-                        <CartesianGrid strokeDasharray="3" />
-                        <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
-                        <YAxis stroke='#ffffff' />
-                        <Tooltip />
-                        <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
-                    </LineChart>
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={travelData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
                 ) : (
                     <p className='text-no-data'>No Data Available to Display</p>
                 )}
