@@ -20,6 +20,16 @@ The expense is not currency specific, i.e., there is no provision to choose amou
 
 ## Application
 
+### Landing page view
+
+![landing-page](images/landing-page.png)
+
+### Analysis page view
+
+![analysis-page-1](images/analysis-page-1.png)
+
+![analysis-page-2](images/analysis-page-2.png)
+
 ## Future implementation ideas
 
 - Adding a currency option as well to standardize the expenses made in other countries.
