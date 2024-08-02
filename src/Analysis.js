@@ -188,9 +188,47 @@ function Analysis() {
                  ) : (
                     <p className='text-no-data'>No Data Available to Display.</p>
                 )}
-
+            
             </div>
 
+            <div className='center-div'>
+                <h2 className='center-subheading'>Monthly Expenses: Utilities</h2>
+
+                {utilityData.length > 0 ? (
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={utilityData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
+                ) : (
+                    <p className='text-no-data'>No Data Available to Display</p>
+                )}
+
+            
+            </div>
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Monthly Expenses: Grocery</h2>
+                
+                {groceryData.length > 0 ? (
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={groceryData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
+                ) : (
+                    <p className='text-no-data'>No Data Available to Display</p>
+                )}
+
+            </div>
 
             <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Rent</h2>
@@ -212,25 +250,6 @@ function Analysis() {
             </div>
         
             <div className='center-div'>
-                <h2 className='center-subheading'>Monthly Expenses: Grocery</h2>
-                
-                {groceryData.length > 0 ? (
-                    <ResponsiveContainer width='100%' height={300}>
-                        <LineChart width={500} height={300} data={groceryData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
-                            <CartesianGrid strokeDasharray="3" />
-                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
-                            <YAxis stroke='#ffffff' />
-                            <Tooltip />
-                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
-                        </LineChart>
-                    </ResponsiveContainer>
-                ) : (
-                    <p className='text-no-data'>No Data Available to Display</p>
-                )}
-
-            </div>
-            
-            <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Food</h2>
 
                 {foodData.length > 0 ? (
@@ -249,24 +268,6 @@ function Analysis() {
 
             </div>
             
-            <div className='center-div'>
-                <h2 className='center-subheading'>Monthly Expenses: Utilities</h2>
-
-                {utilityData.length > 0 ? (
-                    <ResponsiveContainer width='100%' height={300}>
-                        <LineChart width={500} height={300} data={utilityData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
-                            <CartesianGrid strokeDasharray="3" />
-                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
-                            <YAxis stroke='#ffffff' />
-                            <Tooltip />
-                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
-                        </LineChart>
-                    </ResponsiveContainer>
-                ) : (
-                    <p className='text-no-data'>No Data Available to Display</p>
-                )}
-
-            </div>
             
             <div className='center-div'>
                 <h2 className='center-subheading'>Monthly Expenses: Travel</h2>
