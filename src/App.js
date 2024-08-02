@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { db } from './firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Input from './components/Input';
