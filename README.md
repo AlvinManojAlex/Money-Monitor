@@ -42,7 +42,7 @@ The expense is not currency specific, i.e., there is no provision to choose amou
 
 - cd into this repository and run `npm install`, which will install all the needed packages present in 'package.json' file.
 
-- Next run `npm start` to run the application. It can be accessed at `localhost:3000`. Refer `create-react-app` documentation for changing the start method.
+- Next run `npm start` to run the application. It can be accessed at `localhost:3000`.
 
 ## Acknowledgments
 
