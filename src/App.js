@@ -14,7 +14,7 @@ function App() {
   const [expenseType, setExpenseType] = useState('');
   const [amount, setAmount] = useState('');
 
-  const expenseOptions = ['Rent', 'Utilities', 'Travel', 'Grocery', 'Food'];
+  const expenseOptions = ['Utilities', 'Grocery', 'Rent', 'Food', 'Travel'];
 
   const handleAddExpense = async () => {
 
