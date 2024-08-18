@@ -4,6 +4,20 @@ body {
 
 /* The below styling is for screens of laptops, iPads and tablets. */
 
+.signin-button {
+  background-color: #161925;
+  color: #CBF7ED;
+  border: none;
+  position: relative;
+  top: 15rem;
+  padding: 1rem 2rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 15rem;
+  text-align: center;
+}
+
 .App {
   text-align: center;
   align-items: center;

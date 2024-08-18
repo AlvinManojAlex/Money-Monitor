@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Input from './components/Input';
 import Dropdown from './components/Dropdown';
+import GoogleSignin from './components/GoogleSignin';
 
 import './App.css';
 
 function App() {
 
+  const [user, setUser] = useState(null);
   const [expenseType, setExpenseType] = useState('');
   const [amount, setAmount] = useState('');
 
@@ -58,16 +60,25 @@ function App() {
   return (
 
     <div className="App">
-      <Navbar rightText='Analysis' rightLink='/analysis' />
-      <div className='center-div'>
-        <p className='center-content'>Monitor and Analyze your expenses efficiently</p>
-      </div>
-      <div className='form-field'>
-        <Dropdown options={expenseOptions} value={expenseType} onChange={(e) => setExpenseType(e.target.value)} />
-        <Input placeholder='Amount spent' value={amount} onChange={(e) => setAmount(e.target.value)} />
-        <button className='submit-button' onClick={handleAddExpense}>Add Expense</button>
-        <button className='analyze-button' onClick={handleAnalyze}>Analysis</button>
-      </div>
+      { user ? (
+        <>
+          <Navbar rightText='Analysis' rightLink='/analysis' />
+          
+          <div className='center-div'>
+            <p className='center-content'>Monitor and Analyze your expenses efficiently</p>
+          </div>
+
+          <div className='form-field'>
+            <Dropdown options={expenseOptions} value={expenseType} onChange={(e) => setExpenseType(e.target.value)} />
+            <Input placeholder='Amount spent' value={amount} onChange={(e) => setAmount(e.target.value)} />
+            <button className='submit-button' onClick={handleAddExpense}>Add Expense</button>
+            <button className='analyze-button' onClick={handleAnalyze}>Analysis</button>
+          </div>
+        </>
+      ) : (
+        <GoogleSignin setUser={setUser} />
+      ) }
+
     </div>
 
   );
