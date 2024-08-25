@@ -42,6 +42,10 @@ The expense is not currency specific, i.e., there is no provision to choose amou
 
 - cd into this repository and run `npm install`, which will install all the needed packages present in 'package.json' file.
 
+- On your firebase console, create a collection, called `expenses`, in your database for your application.
+
+- Copy your firebase configurations in a file called firebase.js.
+
 - Next run `npm start` to run the application. It can be accessed at `localhost:3000`.
 
 ## Acknowledgments
