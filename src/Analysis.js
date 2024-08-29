@@ -174,7 +174,7 @@ function Analysis() {
 
             const monthlyChartData = Object.keys(monthlyExpenses).map((key) => ({
                 month: key,
-                amount: monthlyExpenses[key]
+                amount: parseFloat(monthlyExpenses[key].toFixed(2)),
             })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
 
             setOverallMonthlyData(monthlyChartData);
