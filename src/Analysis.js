@@ -14,6 +14,7 @@ function Analysis() {
     const [foodData, setFoodData] = useState([]);
     const [utilityData, setUtilityData] = useState([]);
     const [travelData, setTravelData] = useState([]);
+    const [overallMonthlyData, setOverallMonthlyData] = useState([]);
 
     useEffect(() => {
         const fetchExpenses = async () => {
@@ -157,6 +158,27 @@ function Analysis() {
 
             setTravelData(travelChartData);
 
+            // Data aggregation for monthly spending
+            const monthlyExpenses = expenses.reduce((acc, expense) => {
+                const {day, month, year} = expense;
+                const date = new Date(year, month - 1, day);
+                const monthYear = `${date.getMonth() + 1}/${date.getFullYear()}`;
+
+                if (!acc[monthYear]){
+                    acc[monthYear] = 0;
+                }
+
+                acc[monthYear] += expense.amount;
+                return acc;
+            }, {});
+
+            const monthlyChartData = Object.keys(monthlyExpenses).map((key) => ({
+                month: key,
+                amount: monthlyExpenses[key]
+            })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
+
+            setOverallMonthlyData(monthlyChartData);
+
         }
     }, [expenses]);
 
@@ -286,6 +308,24 @@ function Analysis() {
                     <p className='text-no-data'>No Data Available to Display</p>
                 )}
 
+            </div>
+
+            <div className='center-div'>
+                <h2 className='center-subheading'>Overall Monthly Spending</h2>
+
+                {overallMonthlyData.length > 0 ? (
+                    <ResponsiveContainer width='100%' height={300}>
+                        <LineChart width={500} height={300} data={overallMonthlyData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                            <CartesianGrid strokeDasharray="3" />
+                            <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
+                            <YAxis stroke='#ffffff' />
+                            <Tooltip />
+                            <Line type='monotone' dataKey='amount' stroke='#FF5722' activeDot={{r: 5}} strokeWidth={2} />
+                        </LineChart>
+                    </ResponsiveContainer>
+                ) : (
+                    <p className='text-no-data'>No Data Available to Display</p>
+                )}
             </div>
 
         </div>
