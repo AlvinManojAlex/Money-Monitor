@@ -9,7 +9,7 @@ function Analysis() {
 
     const [expenses, setExpenses] = useState([]);
     const [pieChartData, setPieChartData] = useState([]);
-    const [rentData, setRentData] = useState([]);
+    const [housingData, sethousingData] = useState([]);
     const [groceryData, setGroceryData] = useState([]);
     const [foodData, setFoodData] = useState([]);
     const [utilityData, setUtilityData] = useState([]);
@@ -44,7 +44,7 @@ function Analysis() {
             setPieChartData(chartData);
 
             // Data aggregation for rent
-            const rentExpenses = expenses.filter(expense => expense.expense_type === 'Rent');
+            const rentExpenses = expenses.filter(expense => expense.expense_type === 'Housing-related');
             
             const rentByMonth = rentExpenses.reduce((acc, expense) => {
                 const { day, month, year } = expense;
@@ -64,7 +64,7 @@ function Analysis() {
                 amount: rentByMonth[key],
             })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
 
-            setRentData(rentChartData);
+            sethousingData(rentChartData);
 
             // Data aggregation for grocery
             const groceryExpenses = expenses.filter(expense => expense.expense_type === 'Grocery');
@@ -231,11 +231,11 @@ function Analysis() {
             </div>
 
             <div className='center-div'>
-                <h2 className='center-subheading'>Monthly Expenses: Rent</h2>
+                <h2 className='center-subheading'>Monthly Expenses: Housing-related</h2>
 
-                {rentData.length > 0 ? (
+                {housingData.length > 0 ? (
                     <ResponsiveContainer width='100%' height={300}>
-                        <LineChart width={500} height={300} data={rentData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
+                        <LineChart width={500} height={300} data={housingData} margin={{left: 10, top: 20, bottom: 10, right: 10}} >
                             <CartesianGrid strokeDasharray="3" />
                             <XAxis dataKey='month' padding={{left: 20, right: 10}} stroke='#ffffff' />
                             <YAxis stroke='#ffffff' />
