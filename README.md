@@ -8,6 +8,8 @@ Currently the graphs on the application are:
 
 2. Line charts for analyzing the monthly spending trends in each category.
 
+3. Line chart for overall monthly spending trend.
+
 Categories include:- Utilities, Grocery, Rent, Food and Travel.
 
 The expense is not currency specific, i.e., there is no provision to choose amount spent in different currencies.
