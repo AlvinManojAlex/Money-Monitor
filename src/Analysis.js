@@ -62,7 +62,7 @@ function Analysis() {
 
             const rentChartData = Object.keys(rentByMonth).map((key) => ({
                 month: key,
-                amount: rentByMonth[key],
+                amount: parseFloat(rentByMonth[key].toFixed(2)),
             })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
 
             sethousingData(rentChartData);
@@ -85,7 +85,7 @@ function Analysis() {
 
             const groceryChartData = Object.keys(groceryByMonth).map((key) => ({
                 month: key,
-                amount: groceryByMonth[key],
+                amount: parseFloat(groceryByMonth[key].toFixed(2)),
             })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
 
             setGroceryData(groceryChartData);
@@ -108,7 +108,7 @@ function Analysis() {
 
             const foodChartData = Object.keys(foodByMonth).map((key) => ({
                 month: key,
-                amount: foodByMonth[key],
+                amount: parseFloat(foodByMonth[key].toFixed(2)),
             })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
 
             setFoodData(foodChartData);
@@ -131,7 +131,7 @@ function Analysis() {
 
             const utilityChartData = Object.keys(utilityByMonth).map((key) => ({
                 month: key,
-                amount: utilityByMonth[key],
+                amount: parseFloat(utilityByMonth[key].toFixed(2)),
             })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
 
             setUtilityData(utilityChartData);
@@ -153,7 +153,7 @@ function Analysis() {
 
             const travelChartData = Object.keys(travelByMonth).map((key) => ({
                 month: key,
-                amount: travelByMonth[key],
+                amount: parseFloat(travelByMonth[key].toFixed(2)),
             })).sort((a, b) => new Date(`01/${a.month}`) - new Date(`01/${b.month}`));
 
             setTravelData(travelChartData);
