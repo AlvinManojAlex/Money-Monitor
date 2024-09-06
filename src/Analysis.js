@@ -39,7 +39,7 @@ function Analysis() {
 
             const chartData = Object.keys(expenseCategories).map((key) => ({
                 name: key,
-                value: expenseCategories[key],
+                value: parseFloat(expenseCategories[key].toFixed(2)),
             }));
 
             setPieChartData(chartData);
